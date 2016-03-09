@@ -6,7 +6,7 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 11:49:18 by jcamhi            #+#    #+#              #
-#    Updated: 2016/03/09 14:30:44 by jcamhi           ###   ########.fr        #
+#    Updated: 2016/03/09 14:52:14 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJ_PATH = ./obj/
 
 INC_PATH = ./includes
 
-NAME = ft_ls
+NAME = minishell
 
 CC = gcc
 

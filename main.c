@@ -6,7 +6,7 @@
 /*   By: jcamhi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/09 14:36:45 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/09 14:54:50 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int main(void)
 {
+	char *cmd;
 
+	ft_printf("Hi, master.\n");
+	ft_printf("$>");
+	get_next_line(0, &cmd);
+	ft_printf("%s\n", cmd);
 	return (0);
 }
