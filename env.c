@@ -3,24 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 15:12:42 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/09 15:20:58 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/10 17:13:11 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char **ft_getenv(void)
+static t_env	*parse_line(t_env *ret, char *env)
 {
-	int i;
+	char	**split;
 
-	i = 0;
-	while (environ[i] != NULL)
+	split = ft_strsplit(env, '=');
+	if (split[1])
 	{
-		ft_printf("%s\n", environ[i]);
+		ret = add_elem_end(ret, split[0], split[1]);
+		free(split[0]);
+		free(split[1]);
+		free(split);
+	}
+	else
+	{
+		ret = add_elem_end(ret, split[0], "");
+		free(split[0]);
+		free(split);
+	}
+	return (ret);
+}
+
+static t_env	*init_list_no_env(void)
+{
+	t_env	*ret;
+	char	*tmp;
+
+	tmp = ft_strdup("/nfs/2015/j/jcamhi/.brew/bin:/usr/bin:/bin:/usr/sbin");
+	tmp = ft_strjoinaf1(tmp, ":/sbin:/usr/local/bin:/usr/local/munki");
+	ret = add_elem_end(NULL, "PATH", tmp);
+	free(tmp);
+	tmp = getcwd(NULL, 0);
+	ret = add_elem_end(ret, "PWD", tmp);
+	ret = add_elem_end(ret, "OLDPWD", tmp);
+	free(tmp);
+	ret = add_elem_end(ret, "HOME", "/");
+	return (ret);
+}
+
+t_env  *ft_parse_env(char **env)
+{
+	int		i;
+	t_env 	*ret;
+
+	ret = NULL;
+	i = 0;
+	if (!env[0])
+		ret = init_list_no_env();
+	while (env[i] != NULL)
+	{
+		ret = parse_line(ret, env[i]);
 		i++;
 	}
-	return (NULL);
+	return (ret);
 }

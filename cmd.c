@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 17:36:49 by jcamhi           ###   ########.fr       */
+/*   Created: 2016/03/10 16:05:29 by jcamhi            #+#    #+#             */
+/*   Updated: 2016/03/10 16:50:08 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int main(int ac, char **av, char **env)
+char	*get_good_cmd(char *oldcmd)
 {
-	t_env	*list;
 	char	*cmd;
-	char	**scmd;
+	char	**split;
+	int		i;
 
-	if (ac > 1)
-		exit((ft_printf("Usage : %s\n", av[0])));
-	list = ft_parse_env(env);
-	while (1)
+	i = 1;
+	split = ft_special_split(oldcmd);
+	if (!split[0])
+		return (ft_strdup(""));
+	cmd = ft_strdup(split[0]);
+	while (split[i])
 	{
-		ft_printf("$> ");
-		get_next_line(0, &cmd);
-		get_good_cmd(cmd);
-		scmd = ft_strsplit(cmd, ' ');
-		if (scmd[0])
-		{
-			if (is_builtin(scmd[0]) || ft_strequ(scmd[0], "pwd"))
-				exec_builtin(scmd, list);
-		}
+		cmd = ft_strjoinaf1(cmd, " ");
+		cmd = ft_strjoinaf1(cmd, split[i]);
+		i++;
 	}
-	return (0);
+	return (cmd);
 }

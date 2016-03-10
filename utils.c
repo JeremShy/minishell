@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 17:36:49 by jcamhi           ###   ########.fr       */
+/*   Created: 2016/03/10 16:51:55 by jcamhi            #+#    #+#             */
+/*   Updated: 2016/03/10 17:28:36 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int main(int ac, char **av, char **env)
+int	is_builtin(char *cmd)
 {
-	t_env	*list;
-	char	*cmd;
-	char	**scmd;
-
-	if (ac > 1)
-		exit((ft_printf("Usage : %s\n", av[0])));
-	list = ft_parse_env(env);
-	while (1)
+	if (cmd[0] == 'e')
 	{
-		ft_printf("$> ");
-		get_next_line(0, &cmd);
-		get_good_cmd(cmd);
-		scmd = ft_strsplit(cmd, ' ');
-		if (scmd[0])
-		{
-			if (is_builtin(scmd[0]) || ft_strequ(scmd[0], "pwd"))
-				exec_builtin(scmd, list);
-		}
+		if (ft_strequ(cmd, "exit") || ft_strequ(cmd, "env"))
+			return (1);
+		else
+			return (0);
 	}
-	return (0);
+	else if (ft_strequ(cmd, "cd") || ft_strequ(cmd, "setenv") ||
+		ft_strequ(cmd, "unsetenv"))
+		return (1);
+	else
+		return (0);
 }

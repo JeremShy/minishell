@@ -6,12 +6,17 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 11:49:18 by jcamhi            #+#    #+#              #
-#    Updated: 2016/03/09 15:12:40 by jcamhi           ###   ########.fr        #
+#    Updated: 2016/03/10 16:58:12 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME = main.c \
-			env.c
+			env.c \
+			list.c \
+			special_split.c \
+			cmd.c \
+			utils.c \
+			builtins.c
 
 OBJ_PATH = ./obj/
 
