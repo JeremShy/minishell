@@ -6,11 +6,12 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 11:49:18 by jcamhi            #+#    #+#              #
-#    Updated: 2016/03/09 14:52:14 by jcamhi           ###   ########.fr        #
+#    Updated: 2016/03/09 15:12:40 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c 
+SRC_NAME = main.c \
+			env.c
 
 OBJ_PATH = ./obj/
 
