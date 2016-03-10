@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 17:36:49 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/10 20:49:35 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int ac, char **av, char **env)
 		if (scmd[0])
 		{
 			if (is_builtin(scmd[0]) || ft_strequ(scmd[0], "pwd"))
-				exec_builtin(scmd, list);
+				exec_builtin(scmd, &list);
 		}
 	}
 	return (0);

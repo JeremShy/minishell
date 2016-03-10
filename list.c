@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 14:59:10 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 17:28:23 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/10 21:33:06 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ void	change_arg(t_env *list, char *name, char *new_arg)
 		}
 		list = list->next;
 	}
+}
+
+int		isset_arg(t_env *list, char *name)
+{
+	while (list)
+	{
+		if (ft_strequ(name, list->name))
+			return (1);
+		list = list->next;
+	}
+	return (0);
 }
 
 char	*find_arg(t_env *list, char *name)
