@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 19:50:34 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 21:33:07 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/11 15:44:06 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,31 @@ void	delete_list(t_env *list)
 		free(list);
 		list = tmp;
 	}
+}
+
+char	**make_env_char(t_env *list)
+{
+	char	**ret;
+	t_env	*tmp;
+	int	nb_elem;
+
+	tmp = list;
+	nb_elem = 0;
+	while(tmp)
+	{
+		tmp = tmp->next;
+		nb_elem++;
+	}
+	ret = (char**)malloc(sizeof(char*) * (nb_elem + 1));
+	nb_elem = 0;
+	while (list)
+	{
+		ret[nb_elem] = ft_strdup(list->name);
+		ret[nb_elem] = ft_strjoinaf1(ret[nb_elem], "=");
+		ret[nb_elem] = ft_strjoinaf1(ret[nb_elem], list->arg);
+		list = list->next;
+		nb_elem++;
+	}
+	ret[nb_elem] = NULL;
+	return (ret);
 }

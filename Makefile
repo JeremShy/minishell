@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
+#    By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 11:49:18 by jcamhi            #+#    #+#              #
-#    Updated: 2016/03/10 19:50:42 by jcamhi           ###   ########.fr        #
+#    Updated: 2016/03/11 15:00:58 by JeremShy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC_NAME = main.c \
 			utils.c \
 			builtins.c \
 			ft_cd.c \
-			list2.c
+			list2.c \
+			exec.c
 
 OBJ_PATH = ./obj/
 

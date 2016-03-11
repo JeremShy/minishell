@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:31:08 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 20:54:11 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/11 15:41:23 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <sys/wait.h>
 # include <signal.h>
 
+typedef struct dirent		t_dirent;
 typedef struct	s_env {
 	char			*name;
 	char			*arg;
@@ -42,4 +43,6 @@ int				ft_cd(char **scmd, t_env *env);
 int				isset_arg(t_env *list, char *name);
 void			delete_elem(t_env **list, char *name);
 void			delete_list(t_env *list);
+int				exec_file(char **scmd, t_env *list);
+char			**make_env_char(t_env *list);
 #endif

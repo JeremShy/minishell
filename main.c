@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/11 14:52:11 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/11 14:55:22 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int ac, char **av, char **env)
 			if (is_builtin(scmd[0]))
 				exec_builtin(scmd, &list);
 			else
-				exec_file(scmd, &list);
+				exec_file(scmd, list);
 		}
 	}
 	return (0);
