@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 16:57:59 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 21:32:50 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/11 14:52:42 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_exit_bi(t_env *env)
 {
 	delete_list(env);
 	exit(EXIT_SUCCESS);
-	return (1);	
+	return (1);
 }
 
 int	exec_builtin(char **scmd, t_env **env)
@@ -65,7 +65,5 @@ int	exec_builtin(char **scmd, t_env **env)
 		return (ft_unsetenv(scmd, env));
 	else if (ft_strequ(scmd[0], "exit"))
 		return (ft_exit_bi(*env));
-	else if (ft_strequ(scmd[0], "pwd"))
-		ft_printf("%s\n",getcwd(NULL, 0));
 	return(0);
 }
