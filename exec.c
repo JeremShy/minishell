@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 14:53:03 by JeremShy          #+#    #+#             */
-/*   Updated: 2016/03/12 17:49:23 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/12 23:31:52 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ int   exec_file(char **scmd, t_env *list)
 	file = find_exec(scmd[0], list);
 	if (!file)
 		return (0);
+	if (access(file, X_OK) == -1)
+	{
+		ft_putstr_fd("minishell: command not found: ", 2);
+		ft_putstr_fd(file, 2);
+		ft_putchar_fd('\n', 2);
+		free(file);
+		return (0);
+	}
 	env = make_env_char(list);
 	process = fork();
 	if (process != 0)

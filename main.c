@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 20:35:16 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/12 23:16:31 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,21 @@ static void print_prompt(t_env *env)
 {
 	char	*new;
 
-	new = getcwd(NULL, 0);
-	if (!new)
+	new = find_arg(env, "PROMPT");
+	if (ft_strequ(new, ""))
 	{
-		change_arg(env, "PWD", find_arg(env, "HOME"));
-		chdir(find_arg(env, "HOME"));
+		free(new);
 		new = getcwd(NULL, 0);
+		if (!new)
+		{
+			change_arg(env, "PWD", find_arg(env, "HOME"));
+			chdir(find_arg(env, "HOME"));
+			new = getcwd(NULL, 0);
+		}
+		ft_printf("<%s>%% ", new);
 	}
-	ft_printf("<%s>%% ", new);
+	else
+		ft_printf("%s ", new);
 	free(new);
 }
 
@@ -61,6 +68,8 @@ int main(int ac, char **av, char **env)
 {
 	t_env	*list;
 	char	*cmd;
+	char	**cmd_tab;
+	int		i;
 
 	if (ac > 1)
 	{
@@ -69,13 +78,22 @@ int main(int ac, char **av, char **env)
 		ft_putstr_fd("\n", 2);
 		return (0);
 	}
+	signal(SIGINT, SIG_IGN);
 	list = ft_parse_env(env);
 	exec_mshrc(&list);
 	while (1)
 	{
 		print_prompt(list);
 		get_next_line(0, &cmd);
-		exec_cmd(cmd, &list);
+		cmd_tab = ft_strsplit(cmd, ';');
+		i = 0;
+		while (cmd_tab[i])
+		{
+			exec_cmd(cmd_tab[i], &list);
+			i++;
+		}
+		free(cmd_tab);
+		free(cmd);
 	}	
 	return (0);
 }

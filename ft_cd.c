@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 18:38:42 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 17:56:09 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/12 22:14:54 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ int	ft_cd(char **scmd, t_env *env)
 	else
 	{
 		temp = ft_strdup(find_arg(env, "OLDPWD"));
-		change_arg(env, "OLDPWD", find_arg(env, "PWD"));
-		change_arg(env, "PWD", temp);
 		chdir(temp);
+		free(tmp);
+		tmp = getcwd(NULL, 0);
+		change_arg(env, "OLDPWD", find_arg(env, "PWD"));
+		change_arg(env, "PWD", tmp);
 		free(temp);
 	}
 	if (tmp)
