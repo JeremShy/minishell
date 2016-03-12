@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:31:08 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 14:55:40 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/12 17:47:00 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct	s_env {
 t_env			*ft_parse_env(char **env);
 t_env			*add_elem_end(t_env *list, char *name, char *arg);
 char			**ft_special_split(char const *s);
-char			*get_good_cmd(char *oldcmd);
 int				is_builtin(char *cmd);
 int				exec_builtin(char **scmd, t_env **env);
 void			change_arg(t_env *list, char *name, char *new_arg);
@@ -46,4 +45,5 @@ void			delete_list(t_env *list);
 int				exec_file(char **scmd, t_env *list);
 char			**make_env_char(t_env *list);
 int				ft_source(char **scmd, t_env **env);
+void			exec_cmd(char *cmd, t_env **env);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 16:51:55 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 17:28:36 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/12 17:42:47 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_builtin(char *cmd)
 			return (0);
 	}
 	else if (ft_strequ(cmd, "cd") || ft_strequ(cmd, "setenv") ||
-		ft_strequ(cmd, "unsetenv" || ft_strequ(cmd, "source")))
+		ft_strequ(cmd, "unsetenv") || ft_strequ(cmd, "source"))
 		return (1);
 	else
 		return (0);

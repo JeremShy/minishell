@@ -6,7 +6,7 @@
 #    By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 11:49:18 by jcamhi            #+#    #+#              #
-#    Updated: 2016/03/11 15:00:58 by JeremShy         ###   ########.fr        #
+#    Updated: 2016/03/12 17:46:48 by JeremShy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ SRC_NAME = main.c \
 			env.c \
 			list.c \
 			special_split.c \
-			cmd.c \
 			utils.c \
 			builtins.c \
 			ft_cd.c \
 			list2.c \
-			exec.c
+			exec.c \
+			ft_source.c
 
 OBJ_PATH = ./obj/
 

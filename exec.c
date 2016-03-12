@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 14:53:03 by JeremShy          #+#    #+#             */
-/*   Updated: 2016/03/11 16:08:33 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/12 17:49:23 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int   exec_file(char **scmd, t_env *list)
 	pid_t	process;
 
 	file = find_exec(scmd[0], list);
+	if (!file)
+		return (0);
 	env = make_env_char(list);
 	process = fork();
 	if (process != 0)

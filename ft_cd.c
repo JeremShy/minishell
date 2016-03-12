@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 18:38:42 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/10 18:49:48 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/12 17:56:09 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	ft_cd(char **scmd, t_env *env)
 		chdir(temp);
 		free(temp);
 	}
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (1);
 }
