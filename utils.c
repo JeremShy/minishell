@@ -22,7 +22,7 @@ int	is_builtin(char *cmd)
 			return (0);
 	}
 	else if (ft_strequ(cmd, "cd") || ft_strequ(cmd, "setenv") ||
-		ft_strequ(cmd, "unsetenv"))
+		ft_strequ(cmd, "unsetenv" || ft_strequ(cmd, "source")))
 		return (1);
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:31:08 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/11 15:41:23 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/12 14:55:40 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void			delete_elem(t_env **list, char *name);
 void			delete_list(t_env *list);
 int				exec_file(char **scmd, t_env *list);
 char			**make_env_char(t_env *list);
+int				ft_source(char **scmd, t_env **env);
 #endif

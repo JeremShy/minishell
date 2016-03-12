@@ -27,7 +27,10 @@ static int chg_arg1(char **scmd, t_env *env, char *tmp)
 	}
 	else
 	{
-		ft_printf("chdir failed\n");
+		ft_putstr_fd("The directory \"", 2);
+		ft_putstr_fd(scmd[1], 2);
+		ft_putstr_fd("\" is inexistant, or you don't have the necessary ", 2);
+		ft_putstr_fd("rights to access it.\n", 2);
 		free(tmp);
 		return (0);
 	}

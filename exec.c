@@ -14,8 +14,8 @@
 
 static char	*print_error_no_path(char *tmp)
 {
-	ft_printf("%s%s\n", "Error : The path value in environment",
-			" is not valid or inexistant.\n");
+	ft_putstr_fd("Error : The value of the environment variable PATH", 2);
+	ft_putstr_fd(" is not valid or inexistant.\n", 2);
 	free(tmp);
 	return (NULL);
 }
@@ -44,7 +44,9 @@ static char	*while_exec(char **split, char *scmd)
 		}
 		i++;
 	}
-	ft_printf("minishell: command not found: %s\n", scmd);
+	ft_putstr_fd("minishell: command not found: ", 2);
+	ft_putstr_fd(scmd, 2);
+	ft_putchar_fd('\n', 2);
 	return (NULL);
 }
 

@@ -37,7 +37,7 @@ int	ft_unsetenv(char **scmd, t_env **env)
 {
 	if (!scmd[1])
 	{
-		ft_printf("unsetenv: Too few arguments.\n");
+		ft_putstr_fd("unsetenv: Too few arguments.\n", 2);
 		return (0);
 	}
 	if (!isset_arg(*env, scmd[1]))
@@ -65,5 +65,7 @@ int	exec_builtin(char **scmd, t_env **env)
 		return (ft_unsetenv(scmd, env));
 	else if (ft_strequ(scmd[0], "exit"))
 		return (ft_exit_bi(*env));
+	else if (ft_strequ(scmd[0], "source"))
+		return (ft_source(scmd, env));
 	return(0);
 }

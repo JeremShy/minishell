@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/11 14:55:22 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/12 01:03:22 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,23 @@
 
 static void print_prompt(void)
 {
-	char	*new;
+	char		*new;
+
 
 	new = getcwd(NULL, 0);
 	ft_printf("<%s>%% ", new);
 	free(new);
+}
+
+static void	exec_cmd(char **scmd, t_env **env)
+{
+	if (scmd[0])
+	{
+		if (is_builtin(scmd[0]))
+			exec_builtin(scmd, env);
+		else
+			exec_file(scmd, *env);
+	}
 }
 
 int main(int ac, char **av, char **env)
@@ -28,7 +40,12 @@ int main(int ac, char **av, char **env)
 	char	**scmd;
 
 	if (ac > 1)
-		exit((ft_printf("Usage : %s\n", av[0])));
+	{
+		ft_putstr_fd("Usage : ", 2);
+		ft_putstr_fd(av[0], 2);
+		ft_putstr_fd("\n", 2);
+		return (0);
+	}
 	list = ft_parse_env(env);
 	while (1)
 	{
@@ -36,13 +53,7 @@ int main(int ac, char **av, char **env)
 		get_next_line(0, &cmd);
 		get_good_cmd(cmd);
 		scmd = ft_strsplit(cmd, ' ');
-		if (scmd[0])
-		{
-			if (is_builtin(scmd[0]))
-				exec_builtin(scmd, &list);
-			else
-				exec_file(scmd, list);
-		}
+		exec_cmd(scmd, &list);
 	}
 	return (0);
 }
