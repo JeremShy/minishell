@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 14:53:03 by JeremShy          #+#    #+#             */
-/*   Updated: 2016/03/11 16:01:21 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/11 16:08:33 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char		*find_exec(char *scmd, t_env *list)
 	char	**split;
 	char	*tmp;
 
+	if (ft_strchr(scmd, '/'))
+		return(ft_strdup(scmd));
 	tmp = find_arg(list, "PATH");
 	if (ft_strequ(tmp, ""))
 		return (print_error_no_path(tmp));
