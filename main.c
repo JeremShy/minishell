@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 23:16:31 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/13 19:56:04 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,20 @@ int main(int ac, char **av, char **env)
 	{
 		print_prompt(list);
 		get_next_line(0, &cmd);
-		cmd_tab = ft_strsplit(cmd, ';');
-		i = 0;
-		while (cmd_tab[i])
+		if(cmd)
 		{
-			exec_cmd(cmd_tab[i], &list);
-			i++;
+			cmd_tab = ft_strsplit(cmd, ';');
+			i = 0;
+			while (cmd_tab[i])
+			{
+				exec_cmd(cmd_tab[i], &list);
+				i++;
+			}
+			free(cmd_tab);
+			free(cmd);
 		}
-		free(cmd_tab);
-		free(cmd);
-	}	
+		else
+			ft_putchar('\n');
+	}
 	return (0);
 }
