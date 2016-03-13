@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 14:53:03 by JeremShy          #+#    #+#             */
-/*   Updated: 2016/03/12 23:31:52 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/13 23:42:08 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,16 @@ static char	*while_exec(char **split, char *scmd)
 	while (split[i])
 	{
 		directory = opendir(split[i]);
+		while (directory && (truc = readdir(directory)))
+			if (ft_strequ(truc->d_name, scmd) &&
+					!ft_strequ(truc->d_name, ".") &&
+					!ft_strequ(truc->d_name, ".."))
+			{
+				closedir(directory);
+				return (ft_strjoinaf1(ft_strjoin(split[i], "/"), scmd));
+			}
 		if (directory)
-		{
-			while ((truc = readdir(directory)))
-				if (ft_strequ(truc->d_name, scmd) &&
-						!ft_strequ(truc->d_name, ".") &&
-						!ft_strequ(truc->d_name, ".."))
-				{
-					closedir(directory);
-					return (ft_strjoin(ft_strjoinaf1(split[i], "/"), scmd));
-				}
 			closedir(directory);
-		}
 		i++;
 	}
 	ft_putstr_fd("minishell: command not found: ", 2);
@@ -54,6 +52,7 @@ char		*find_exec(char *scmd, t_env *list)
 {
 	char	**split;
 	char	*tmp;
+	char	*ret;
 
 	if (ft_strchr(scmd, '/'))
 		return(ft_strdup(scmd));
@@ -62,12 +61,14 @@ char		*find_exec(char *scmd, t_env *list)
 		return (print_error_no_path(tmp));
 	split = ft_strsplit(tmp, ':');
 	free(tmp);
-	return while_exec(split, scmd);
+	ret = while_exec(split, scmd);
+	free_char_tab(split);
+	return (ret);
 }
 
 int   exec_file(char **scmd, t_env *list)
 {
-	char *file;
+	char	*file;
 	char	**env;
 	pid_t	process;
 
@@ -75,8 +76,8 @@ int   exec_file(char **scmd, t_env *list)
 	if (!file)
 		return (0);
 	if (access(file, X_OK) == -1)
-	{
-		ft_putstr_fd("minishell: command not found: ", 2);
+	{	
+		ft_putstr_fd("minishell: Command not found : ", 2);
 		ft_putstr_fd(file, 2);
 		ft_putchar_fd('\n', 2);
 		free(file);
@@ -88,5 +89,6 @@ int   exec_file(char **scmd, t_env *list)
 		wait(NULL);
 	else
 		execve(file, scmd, env);
+	free_char_tab(env);
 	return (1);
 }

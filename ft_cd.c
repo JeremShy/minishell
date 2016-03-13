@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 18:38:42 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 22:14:54 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/13 23:17:50 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ int	ft_cd(char **scmd, t_env *env)
 	if (!scmd[1])
 	{
 		change_arg(env, "OLDPWD", tmp);
-		change_arg(env, "PWD", find_arg(env, "HOME"));
-		chdir(find_arg(env, "HOME"));
+		temp = find_arg(env, "HOME");
+		change_arg(env, "PWD", temp);
+		chdir(temp);
+		free(temp);
 	}
 	else if (!ft_strequ(scmd[1], "-"))
 		return(chg_arg1(scmd, env, tmp));

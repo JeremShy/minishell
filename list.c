@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 14:59:10 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 20:34:34 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/13 23:53:23 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		isset_arg(t_env *list, char *name)
 char	*find_arg(t_env *list, char *name)
 {
 	if (!list)
-		return (NULL);
+		return (ft_strdup(""));
 	while (list)
 	{
 		if (ft_strequ(list->name, name))

@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:31:08 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 22:16:18 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/13 23:03:34 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ int				exec_file(char **scmd, t_env *list);
 char			**make_env_char(t_env *list);
 int				ft_source(char **scmd, t_env **env);
 void			exec_cmd(char *cmd, t_env **env);
+void			handle_line(char *line, t_env **env);
+void			free_char_tab(char **tab);
 #endif

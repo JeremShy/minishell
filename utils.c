@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 16:51:55 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/12 22:18:36 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/13 23:08:26 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,19 @@ int	is_builtin(char *cmd)
 		return (1);
 	else
 		return (0);
+}
+
+void free_char_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

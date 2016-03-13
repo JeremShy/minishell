@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 19:50:34 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/11 15:44:06 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/13 23:49:04 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	delete_elem(t_env **list, char *name)
 			free(head->next);
 			head->next = ptr;
 		}
-		head = head->next;
+		if (head->next)
+			head = head->next;
 	}
 }
 
