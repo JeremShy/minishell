@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 19:50:34 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/14 13:10:21 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:56:14 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	delete_elem(t_env **list, char *name)
 		*list = ptr;
 		return ;
 	}
-	while (head->next)
+	while (head && head->next)
 	{
 		if (ft_strequ((head->next)->name, name))
 		{
@@ -37,8 +37,7 @@ void	delete_elem(t_env **list, char *name)
 			free(head->next);
 			head->next = ptr;
 		}
-		if (head->next)
-			head = head->next;
+		head = head->next;
 	}
 }
 
@@ -60,11 +59,11 @@ char	**make_env_char(t_env *list)
 {
 	char	**ret;
 	t_env	*tmp;
-	int	nb_elem;
+	int		nb_elem;
 
 	tmp = list;
 	nb_elem = 0;
-	while(tmp)
+	while (tmp)
 	{
 		tmp = tmp->next;
 		nb_elem++;

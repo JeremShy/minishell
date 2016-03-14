@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_source.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:53:20 by JeremShy          #+#    #+#             */
-/*   Updated: 2016/03/14 13:10:08 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:44:52 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int ft_source(char **scmd, t_env **env)
+int	ft_source(char **scmd, t_env **env)
 {
 	int		fd;
 	char	*cmd;

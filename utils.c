@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 16:51:55 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/14 13:10:34 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:46:40 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	is_builtin(char *cmd)
+int		is_builtin(char *cmd)
 {
 	if (cmd[0] == 'e')
 	{
@@ -28,7 +28,7 @@ int	is_builtin(char *cmd)
 		return (0);
 }
 
-void free_char_tab(char **tab)
+void	free_char_tab(char **tab)
 {
 	int	i;
 

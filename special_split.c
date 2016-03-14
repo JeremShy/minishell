@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.c                                             :+:      :+:    :+:   */
+/*   special_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:54:54 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/14 13:10:27 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:46:26 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static int	ft_isspace(char car)
+static int		ft_isspace(char car)
 {
 	if (car == '\t' || car == ' ')
 		return (1);
@@ -20,7 +20,7 @@ static int	ft_isspace(char car)
 		return (0);
 }
 
-static	int		ft_strcount(char const *s)
+static int		ft_strcount(char const *s)
 {
 	int i;
 	int count;
@@ -39,7 +39,7 @@ static	int		ft_strcount(char const *s)
 	return (count);
 }
 
-static	int		poulet(size_t i, size_t j, char const *s)
+static int		poulet(size_t i, size_t j, char const *s)
 {
 	while (!ft_isspace(s[i + j]) && s[i + j] != '\0')
 		j++;

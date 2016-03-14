@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 15:12:42 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/14 13:09:53 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:50:23 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static t_env	*init_list_no_env(void)
 	return (ret);
 }
 
-t_env  *ft_parse_env(char **env)
+t_env			*ft_parse_env(char **env)
 {
 	int		i;
-	t_env 	*ret;
+	t_env	*ret;
 	char	*tmp;
 
 	ret = NULL;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 18:38:42 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/14 13:10:03 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:49:11 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static int chg_arg1(char **scmd, t_env *env, char *tmp)
+static int	chg_arg1(char **scmd, t_env *env, char *tmp)
 {
 	char	*new;
 
@@ -36,22 +36,27 @@ static int chg_arg1(char **scmd, t_env *env, char *tmp)
 	}
 }
 
-int	ft_cd(char **scmd, t_env *env)
+static void	goto_home(t_env *env, char *tmp)
+{
+	char	*temp;
+
+	change_arg(env, "OLDPWD", tmp);
+	temp = find_arg(env, "HOME");
+	change_arg(env, "PWD", temp);
+	chdir(temp);
+	free(temp);
+}
+
+int			ft_cd(char **scmd, t_env *env)
 {
 	char	*tmp;
 	char	*temp;
 
 	tmp = getcwd(NULL, 0);
 	if (!scmd[1])
-	{
-		change_arg(env, "OLDPWD", tmp);
-		temp = find_arg(env, "HOME");
-		change_arg(env, "PWD", temp);
-		chdir(temp);
-		free(temp);
-	}
+		goto_home(env, tmp);
 	else if (!ft_strequ(scmd[1], "-"))
-		return(chg_arg1(scmd, env, tmp));
+		return (chg_arg1(scmd, env, tmp));
 	else
 	{
 		temp = ft_strdup(find_arg(env, "OLDPWD"));

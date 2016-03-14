@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 14:53:03 by JeremShy          #+#    #+#             */
-/*   Updated: 2016/03/14 13:09:58 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:52:30 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static char	*print_error_no_path(char *tmp)
 
 static char	*while_exec(char **split, char *scmd)
 {
-	int		i;
-	DIR		*directory;
+	int			i;
+	DIR			*directory;
 	t_dirent	*truc;
 
 	i = 0;
@@ -55,7 +55,7 @@ char		*find_exec(char *scmd, t_env *list)
 	char	*ret;
 
 	if (ft_strchr(scmd, '/'))
-		return(ft_strdup(scmd));
+		return (ft_strdup(scmd));
 	tmp = find_arg(list, "PATH");
 	if (ft_strequ(tmp, ""))
 		return (print_error_no_path(tmp));
@@ -66,7 +66,7 @@ char		*find_exec(char *scmd, t_env *list)
 	return (ret);
 }
 
-int   exec_file(char **scmd, t_env *list)
+int			exec_file(char **scmd, t_env *list)
 {
 	char	*file;
 	char	**env;
@@ -76,7 +76,7 @@ int   exec_file(char **scmd, t_env *list)
 	if (!file)
 		return (0);
 	if (access(file, X_OK) == -1)
-	{	
+	{
 		ft_putstr_fd("minishell: Command not found : ", 2);
 		ft_putstr_fd(file, 2);
 		ft_putchar_fd('\n', 2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 14:59:10 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/14 13:10:15 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:55:58 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ static t_env	*create_elem(char *name, char *arg)
 	return (ret);
 }
 
-t_env	*add_elem_end(t_env *list, char *name, char *arg)
+t_env			*add_elem_end(t_env *list, char *name, char *arg)
 {
 	t_env	*tmp;
 
 	tmp = list;
 	if (!list)
 		return (create_elem(name, arg));
-	while(list->next)
+	while (list->next)
 		list = list->next;
 	list->next = create_elem(name, arg);
 	return (tmp);
 }
 
-void	change_arg(t_env *list, char *name, char *new_arg)
+void			change_arg(t_env *list, char *name, char *new_arg)
 {
 	if (!list)
 		return ;
@@ -51,7 +51,7 @@ void	change_arg(t_env *list, char *name, char *new_arg)
 	}
 }
 
-int		isset_arg(t_env *list, char *name)
+int				isset_arg(t_env *list, char *name)
 {
 	while (list)
 	{
@@ -62,7 +62,7 @@ int		isset_arg(t_env *list, char *name)
 	return (0);
 }
 
-char	*find_arg(t_env *list, char *name)
+char			*find_arg(t_env *list, char *name)
 {
 	if (!list)
 		return (ft_strdup(""));

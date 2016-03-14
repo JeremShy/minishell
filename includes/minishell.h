@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:31:08 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/13 23:03:34 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/14 15:00:21 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_env {
 
 t_env			*ft_parse_env(char **env);
 t_env			*add_elem_end(t_env *list, char *name, char *arg);
-char			**ft_special_split(char const *s); 
+char			**ft_special_split(char const *s);
 int				is_builtin(char *cmd);
 int				exec_builtin(char **scmd, t_env **env);
 void			change_arg(t_env *list, char *name, char *new_arg);

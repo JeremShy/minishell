@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 16:57:59 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/14 13:09:45 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 14:47:00 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	ft_env(t_env *env)
+int			ft_env(t_env *env)
 {
 	while (env)
 	{
@@ -22,7 +22,7 @@ int	ft_env(t_env *env)
 	return (1);
 }
 
-int	ft_setenv(char **scmd, t_env **env)
+int			ft_setenv(char **scmd, t_env **env)
 {
 	if (!scmd[1] || !scmd[2])
 		return (0);
@@ -33,7 +33,7 @@ int	ft_setenv(char **scmd, t_env **env)
 	return (1);
 }
 
-int	ft_unsetenv(char **scmd, t_env **env)
+int			ft_unsetenv(char **scmd, t_env **env)
 {
 	if (!scmd[1])
 	{
@@ -53,7 +53,7 @@ static int	ft_exit_bi(t_env *env)
 	return (1);
 }
 
-int	exec_builtin(char **scmd, t_env **env)
+int			exec_builtin(char **scmd, t_env **env)
 {
 	if (ft_strequ(scmd[0], "cd"))
 		return (ft_cd(scmd, *env));
@@ -67,5 +67,5 @@ int	exec_builtin(char **scmd, t_env **env)
 		return (ft_exit_bi(*env));
 	else if (ft_strequ(scmd[0], "source"))
 		return (ft_source(scmd, env));
-	return(0);
+	return (0);
 }
