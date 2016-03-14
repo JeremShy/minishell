@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 15:12:42 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/13 15:52:04 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/03/14 01:41:17 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_env  *ft_parse_env(char **env)
 {
 	int		i;
 	t_env 	*ret;
+	char	*tmp;
 
 	ret = NULL;
 	i = 0;
@@ -63,6 +64,12 @@ t_env  *ft_parse_env(char **env)
 	{
 		ret = parse_line(ret, env[i]);
 		i++;
+	}
+	if (isset_arg(ret, "SHLVL"))
+	{
+		tmp = find_arg(ret, "SHLVL");
+		change_arg(ret, "SHLVL", ft_itoa_base(ft_atoi(tmp) + 1, 10));
+		free(tmp);
 	}
 	return (ret);
 }

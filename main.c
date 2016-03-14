@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:14 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/13 23:52:03 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/14 01:41:42 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void print_prompt(t_env *env)
 	char	*tmp;
 
 	new = find_arg(env, "PROMPT");
-	ft_printf("new : %s\n", new);
 	if (ft_strequ(new, ""))
 	{
 		free(new);
