@@ -6,7 +6,7 @@
 /*   By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 16:51:55 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/03/13 23:08:26 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/03/14 13:10:34 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_builtin(char *cmd)
 			return (0);
 	}
 	else if (ft_strequ(cmd, "cd") || ft_strequ(cmd, "setenv") ||
-		ft_strequ(cmd, "unsetenv") || ft_strequ(cmd, "source"))
+			ft_strequ(cmd, "unsetenv") || ft_strequ(cmd, "source"))
 		return (1);
 	else
 		return (0);

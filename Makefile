@@ -6,20 +6,20 @@
 #    By: JeremShy <JeremShy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 11:49:18 by jcamhi            #+#    #+#              #
-#*   Updated: 2016/03/14 01:46:11 by jcamhi           ###   ########.fr       *#
+#*   Updated: 2016/03/14 13:09:31 by jcamhi           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME = main.c \
-			env.c \
-			list.c \
-			special_split.c \
-			utils.c \
-			builtins.c \
-			ft_cd.c \
-			list2.c \
-			exec.c \
-			ft_source.c
+	   env.c \
+	   list.c \
+	   special_split.c \
+	   utils.c \
+	   builtins.c \
+	   ft_cd.c \
+	   list2.c \
+	   exec.c \
+	   ft_source.c
 
 OBJ_PATH = ./obj/
 
